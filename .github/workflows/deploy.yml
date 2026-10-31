@@ -6,10 +6,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# 自动开通 Pages 需要较宽的工作流令牌权限；
+# 这里用 write-all，因为创建 Pages 站点这个动作不受细粒度权限覆盖。
+permissions: write-all
 
 # 同一时间只跑一个部署，新的推送会取消进行中的旧任务
 concurrency:
